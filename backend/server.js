@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const {
-  DB_HOST = "10.0.2.134", // acá colocar la IP Privada EC2 DB
+  DB_HOST = "172.31.7.203", // acá colocar la IP Privada EC2 DB
   DB_USER = "root",
   DB_PASSWORD = "admin123",
   DB_NAME = "tienda_perritos",
@@ -33,7 +33,7 @@ async function initDb() {
     });
     console.log("Pool de conexiones MySQL inicializado.");
   } catch (err) {
-    console.error("Error al inicializar pool de MySQL:", err);
+    console.error("ERROR al inicializar pool de MySQL:", err);
   }
 }
 
@@ -133,7 +133,7 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "Backend de tienda de perritos en ejecución." });
 });
 
-// Iniciar servidor
+// Iniciar servidddor
 app.listen(PORT, async () => {
   console.log(`Servidor backend escuchando en puerto ${PORT}`);
   await initDb();
